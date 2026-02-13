@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William Thompson - Website Design Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0A3D62;
+            --accent: #E84855;
+            --gold: #D4AF37;
+            --light: #F8F9FA;
+            --dark: #1A1A2E;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: linear-gradient(135deg, #0A3D62 0%, #1A1A2E 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .ad-container {
+            max-width: 1200px;
+            width: 100%;
+            background: var(--light);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 
+                0 50px 100px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            padding: 80px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(232, 72, 85, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 6s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(232, 72, 85, 0.2);
+            color: var(--accent);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 2px solid var(--accent);
+            animation: slideDown 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 900;
+            color: var(--light);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            animation: slideDown 0.8s ease-out 0.4s both;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, var(--accent), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: rgba(248, 249, 250, 0.9);
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            animation: slideDown 0.8s ease-out 0.6s both;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: slideDown 0.8s ease-out 0.8s both;
+        }
+
+        .btn {
+            padding: 16px 36px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 10px 30px rgba(232, 72, 85, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(232, 72, 85, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .content {
+            padding: 60px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid #E8E8E8;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.2s; }
+        .feature-card:nth-child(2) { animation-delay: 0.3s; }
+        .feature-card:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .pricing {
+            background: linear-gradient(135deg, #F8F9FA 0%, #E8E8E8 100%);
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+        }
+
+        .pricing h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .price-range {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 20px 0;
+            letter-spacing: -1px;
+        }
+
+        .price-details {
+            color: #666;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
+        }
+
+        .value-props {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .value-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .checkmark {
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        .footer {
+            background: var(--dark);
+            padding: 40px 60px;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--gold);
+        }
+
+        .credentials {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 30px;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .content {
+                padding: 40px 30px;
+            }
+
+            .pricing {
+                padding: 40px 30px;
+            }
+
+            .footer {
+                padding: 30px 20px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ad-container">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="badge">CERTIFIED WEB DESIGNER</div>
+                <h1>Transform Your Vision Into a <span class="highlight">Stunning Website</span></h1>
+                <p class="subtitle">
+                    Data-driven design meets creative excellence. Get a professional, responsive website 
+                    that combines technical precision with visual appeal.
+                </p>
+                <div class="cta-group">
+                    <a href="https://wa.me/233242123801?text=Hello%2C%20I%20would%20like%20a%20quote." class="btn btn-primary" target="_blank">Get Your Free Quote</a>
+                    <a href="https://yooku98.github.io/Portfolio-Website/index.html" class="btn btn-secondary" target="_blank">View Portfolio</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Custom Design</h3>
+                    <p>Bespoke websites tailored to your brand identity. No templates, no cookie-cutter solutions—just unique, professional designs that stand out.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive & Modern</h3>
+                    <p>Mobile-first design that looks perfect on every device. Built with HTML, CSS, and modern web technologies for optimal performance.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Data-Informed</h3>
+                    <p>Leverage analytics expertise to create user-focused websites. Strategic design backed by data science principles and best practices.</p>
+                </div>
+            </div>
+
+            <div class="pricing">
+                <h2>Transparent Pricing</h2>
+                <div class="price-range">GHS1,200 – GHS2,000</div>
+                <div class="price-details">
+                    Pricing varies based on project complexity, pages, and features. Basic landing pages 
+                    start at GHS1,200, while comprehensive business websites with custom functionality reach 
+                    GHS2,000. Every project includes responsive design, clean code, and ongoing support.
+                </div>
+                
+                <div class="value-props">
+                    <div class="value-item">
+                        <div class="checkmark">✓</div>
+                        <span>Fast Turnaround</span>
+                    </div>
+                    <div class="value-item">
+                        <div class="checkmark">✓</div>
+                        <span>Unlimited Revisions</span>
+                    </div>
+                    <div class="value-item">
+                        <div class="checkmark">✓</div>
+                        <span>SEO Optimized</span>
+                    </div>
+                    <div class="value-item">
+                        <div class="checkmark">✓</div>
+                        <span>Free Consultation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="contact-info">
+                📧 <a href="mailto:willyoks@gmail.com">willyoks@gmail.com</a>
+            </div>
+            <div class="credentials">
+                William Thompson | Certified Web Designer (OpenLabs/NIIT) | Data Analyst & Data Scientist
+            </div>
+            <div class="credentials" style="margin-top: 10px;">
+                Professional portfolio & analytics expertise • Full-stack development skills
+            </div>
+        </div>
+    </div>
+    <script>
+      function sendToWhatsApp() {
+        const msg = `Hello, I want a quote.%0AItem: ${item}%0AQuantity: ${qty}`;
+        window.open(`https://wa.me/233242123801?text=${msg}`, "_blank");
+      }
+      </script>
+</body>
+</html>
