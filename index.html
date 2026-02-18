@@ -21,44 +21,100 @@
             --success: #25D366;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Manrope', sans-serif;
-            background: linear-gradient(135deg, #0A3D62 0%, #1A1A2E 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            background: var(--light);
+            color: var(--dark);
             overflow-x: hidden;
         }
 
-        .ad-container {
-            max-width: 1200px;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
             width: 100%;
-            background: var(--light);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 
-                0 50px 100px rgba(0, 0, 0, 0.5),
-                0 0 0 1px rgba(255, 255, 255, 0.1);
+            background: rgba(26, 26, 46, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            padding: 20px 60px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 1px;
+            z-index: 2001;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
             position: relative;
-            animation: fadeIn 1s ease-out;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s ease;
         }
 
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 28px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 2001;
+        }
+
+        /* Hero Section */
         .hero {
+            min-height: 100vh;
             background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            padding: 80px 60px;
+            display: flex;
+            align-items: center;
+            padding: 120px 60px 80px;
             position: relative;
             overflow: hidden;
         }
@@ -66,25 +122,13 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
+            width: 800px;
+            height: 800px;
             background: radial-gradient(circle, rgba(232, 72, 85, 0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
             border-radius: 50%;
             animation: pulse 8s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: pulse 6s ease-in-out infinite reverse;
         }
 
         @keyframes pulse {
@@ -93,7 +137,8 @@
         }
 
         .hero-content {
-            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
             z-index: 2;
         }
 
@@ -107,18 +152,6 @@
             font-weight: 600;
             margin-bottom: 24px;
             border: 2px solid var(--accent);
-            animation: slideDown 0.8s ease-out 0.2s both;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         h1 {
@@ -128,7 +161,6 @@
             color: var(--light);
             line-height: 1.1;
             margin-bottom: 24px;
-            animation: slideDown 0.8s ease-out 0.4s both;
         }
 
         .highlight {
@@ -141,17 +173,15 @@
         .subtitle {
             font-size: 20px;
             color: rgba(248, 249, 250, 0.9);
-            max-width: 600px;
+            max-width: 700px;
             line-height: 1.6;
             margin-bottom: 40px;
-            animation: slideDown 0.8s ease-out 0.6s both;
         }
 
         .cta-group {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
-            animation: slideDown 0.8s ease-out 0.8s both;
         }
 
         .btn {
@@ -164,6 +194,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            text-align: center;
         }
 
         .btn-primary {
@@ -190,10 +221,33 @@
             transform: translateY(-3px);
         }
 
-        .content {
-            padding: 60px;
+        /* Content Sections */
+        .content-section {
+            padding: 100px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Features */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -203,26 +257,11 @@
 
         .feature-card {
             background: white;
-            padding: 32px;
+            padding: 40px 30px;
             border-radius: 16px;
             border: 2px solid #E8E8E8;
             transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out both;
-        }
-
-        .feature-card:nth-child(1) { animation-delay: 0.2s; }
-        .feature-card:nth-child(2) { animation-delay: 0.3s; }
-        .feature-card:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            text-align: center;
         }
 
         .feature-card:hover {
@@ -232,15 +271,9 @@
         }
 
         .feature-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--accent), var(--gold));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
+            font-size: 48px;
             margin-bottom: 20px;
+            display: block;
         }
 
         .feature-card h3 {
@@ -256,29 +289,127 @@
             font-size: 15px;
         }
 
-        .pricing-section {
-            margin-bottom: 60px;
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 50px;
+        .portfolio-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid #E8E8E8;
+            transition: all 0.4s ease;
         }
 
-        .pricing-header h2 {
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent);
+        }
+
+        .portfolio-preview {
+            height: 220px;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-preview::before {
+            content: attr(data-icon);
+            position: absolute;
+            font-size: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.2;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-card:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .view-demo-btn {
+            padding: 12px 30px;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .view-demo-btn:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .portfolio-info {
+            padding: 30px;
+        }
+
+        .portfolio-type {
+            display: inline-block;
+            background: rgba(232, 72, 85, 0.1);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 48px;
+            font-size: 24px;
             color: var(--dark);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
-        .pricing-header p {
-            font-size: 18px;
+        .portfolio-card p {
             color: #666;
-            max-width: 700px;
-            margin: 0 auto;
+            line-height: 1.7;
+            font-size: 14px;
+            margin-bottom: 20px;
         }
 
+        .portfolio-tech {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            padding: 5px 12px;
+            background: #F0F0F0;
+            color: #555;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* Packages */
         .packages {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -289,16 +420,11 @@
         .package-card {
             background: white;
             border-radius: 20px;
-            padding: 40px 32px;
+            padding: 40px 30px;
             border: 3px solid #E8E8E8;
             transition: all 0.4s ease;
             position: relative;
-            animation: fadeInUp 0.8s ease-out both;
         }
-
-        .package-card:nth-child(1) { animation-delay: 0.3s; }
-        .package-card:nth-child(2) { animation-delay: 0.4s; }
-        .package-card:nth-child(3) { animation-delay: 0.5s; }
 
         .package-card:hover {
             transform: translateY(-10px);
@@ -308,7 +434,6 @@
 
         .package-card.featured {
             border-color: var(--accent);
-            border-width: 3px;
             background: linear-gradient(135deg, #FFF5F5 0%, #FFFFFF 100%);
         }
 
@@ -362,19 +487,19 @@
         }
 
         .package-features li {
-            padding: 12px 0;
+            padding: 10px 0;
             color: #444;
-            font-size: 15px;
+            font-size: 14px;
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 10px;
         }
 
         .package-features li::before {
             content: '✓';
             color: var(--success);
             font-weight: 700;
-            font-size: 18px;
+            font-size: 16px;
             flex-shrink: 0;
         }
 
@@ -407,6 +532,7 @@
             background: var(--dark);
         }
 
+        /* Payment Info */
         .payment-info {
             background: linear-gradient(135deg, #F8F9FA 0%, #E8E8E8 100%);
             padding: 40px;
@@ -424,7 +550,7 @@
 
         .payment-options {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
             margin-bottom: 20px;
@@ -436,14 +562,15 @@
             gap: 10px;
             font-weight: 600;
             color: #333;
+            font-size: 14px;
         }
 
+        /* Contact Card */
         .contact-card {
             background: white;
             border-radius: 20px;
-            padding: 50px;
+            padding: 50px 40px;
             border: 2px solid #E8E8E8;
-            animation: fadeInUp 0.8s ease-out 0.6s both;
         }
 
         .contact-card h3 {
@@ -463,7 +590,7 @@
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
@@ -489,12 +616,14 @@
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
+            font-size: 14px;
         }
 
         .contact-item a:hover {
             color: var(--gold);
         }
 
+        /* Footer */
         .footer {
             background: var(--dark);
             padding: 40px 60px;
@@ -508,9 +637,54 @@
             margin-top: 10px;
         }
 
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
+            nav {
+                padding: 15px 30px;
+            }
+
+            .nav-logo {
+                font-size: 20px;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(26, 26, 46, 0.98);
+                flex-direction: column;
+                gap: 0;
+                padding: 20px 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-links a {
+                padding: 15px 30px;
+                display: block;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
             .hero {
-                padding: 60px 30px;
+                padding: 100px 30px 60px;
+                min-height: auto;
             }
 
             h1 {
@@ -521,12 +695,32 @@
                 font-size: 18px;
             }
 
-            .content {
-                padding: 40px 30px;
+            .cta-group {
+                flex-direction: column;
             }
 
-            .pricing-header h2 {
+            .btn {
+                width: 100%;
+            }
+
+            .content-section {
+                padding: 80px 30px;
+            }
+
+            .section-header h2 {
                 font-size: 36px;
+            }
+
+            .section-header p {
+                font-size: 16px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
             }
 
             .packages {
@@ -537,174 +731,298 @@
                 padding: 30px 20px;
             }
 
+            .payment-options {
+                flex-direction: column;
+                gap: 15px;
+            }
+
             .contact-card {
                 padding: 30px 20px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
 
             .footer {
                 padding: 30px 20px;
             }
+        }
 
-            .cta-group {
-                flex-direction: column;
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 36px;
             }
 
-            .btn {
-                width: 100%;
-                text-align: center;
+            .section-header h2 {
+                font-size: 32px;
+            }
+
+            .package-price {
+                font-size: 40px;
+            }
+
+            .portfolio-preview {
+                height: 180px;
+            }
+
+            .portfolio-preview::before {
+                font-size: 80px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="ad-container">
-        <div class="hero">
-            <div class="hero-content">
-                <div class="badge">CERTIFIED WEB DESIGNER</div>
-                <h1>Transform Your Vision Into a <span class="highlight">Stunning Website</span></h1>
-                <p class="subtitle">
-                    Data-driven design meets creative excellence. Get a professional, responsive website 
-                    that combines technical precision with visual appeal.
-                </p>
-                <div class="cta-group">
-                    <a href="https://wa.me/233242123801?text=Hello%2C%20I%20would%20like%20a%20quote." class="btn btn-primary">💬 Chat on WhatsApp</a>
-                    <a href="https://yooku98.github.io/Portfolio-Website/index.html" class="btn btn-secondary" target="_blank">View Portfolio</a>
-                </div>
+    <nav>
+        <div class="nav-content">
+            <div class="nav-logo">William Thompson</div>
+            <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="badge">CERTIFIED WEB DESIGNER</div>
+            <h1>Transform Your Vision Into a <span class="highlight">Stunning Website</span></h1>
+            <p class="subtitle">
+                Data-driven design meets creative excellence. Get a professional, responsive website 
+                that combines technical precision with visual appeal.
+            </p>
+            <div class="cta-group">
+                <a href="https://wa.me/233242123801?text=Hello%2C%20I%20would%20like%20a%20quote." class="btn btn-primary">💬 Chat on WhatsApp</a>
+                <a href="#portfolio" class="btn btn-secondary">View Portfolio</a>
             </div>
         </div>
+    </section>
 
-        <div class="content">
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Custom Design</h3>
-                    <p>Bespoke websites tailored to your brand identity. No templates, no cookie-cutter solutions—just unique, professional designs that stand out.</p>
+    <section class="content-section" id="features">
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Custom Design</h3>
+                <p>Bespoke websites tailored to your brand identity. No templates, no cookie-cutter solutions—just unique, professional designs that stand out.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Responsive & Modern</h3>
+                <p>Mobile-first design that looks perfect on every device. Built with HTML, CSS, and modern web technologies for optimal performance.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Data-Informed</h3>
+                <p>Leverage analytics expertise to create user-focused websites. Strategic design backed by data science principles and best practices.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="portfolio">
+        <div class="section-header">
+            <h2>Live Portfolio Examples</h2>
+            <p>Browse real websites I've designed to see the quality and style of my work. Each project showcases different industries and design approaches.</p>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <div class="portfolio-preview" data-icon="🍽️">
+                    <div class="portfolio-overlay">
+                        <a href="https://catfish-supreme.vercel.app/" target="_blank" class="view-demo-btn">View Live Demo →</a>
+                    </div>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Responsive & Modern</h3>
-                    <p>Mobile-first design that looks perfect on every device. Built with HTML, CSS, and modern web technologies for optimal performance.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Data-Informed</h3>
-                    <p>Leverage analytics expertise to create user-focused websites. Strategic design backed by data science principles and best practices.</p>
+                <div class="portfolio-info">
+                    <span class="portfolio-type">Restaurant</span>
+                    <h3>Savory Haven</h3>
+                    <p>Elegant restaurant website featuring menu showcase, gallery, and online reservations. Warm color palette perfect for fine dining.</p>
+                    <div class="portfolio-tech">
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">Responsive</span>
+                        <span class="tech-tag">Animations</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="pricing-section">
-                <div class="pricing-header">
-                    <h2>Choose Your Package</h2>
-                    <p>Transparent pricing with no hidden fees. All packages include mobile-responsive design, unlimited revisions, and free consultation.</p>
-                </div>
-
-                <div class="packages">
-                    <div class="package-card">
-                        <div class="package-name">Starter</div>
-                        <div class="package-price">GH₵800<span></span></div>
-                        <div class="package-delivery">⚡ Delivery: 5-7 days</div>
-                        <ul class="package-features">
-                            <li>1-page portfolio/landing site</li>
-                            <li>Mobile responsive design</li>
-                            <li>Contact form integration</li>
-                            <li>Basic SEO setup</li>
-                            <li>Social media links</li>
-                            <li>2 rounds of revisions</li>
-                        </ul>
-                        <a href="https://wa.me/233242123801?text=I'm%20interested%20in%20the%20Starter%20package%20(GH%E2%82%B5800)" class="package-cta">Get Started</a>
-                    </div>
-
-                    <div class="package-card featured">
-                        <div class="popular-badge">Most Popular</div>
-                        <div class="package-name">Business</div>
-                        <div class="package-price">GH₵1,500<span></span></div>
-                        <div class="package-delivery">⚡ Delivery: 10-14 days</div>
-                        <ul class="package-features">
-                            <li>5-7 page website</li>
-                            <li>Professional design & branding</li>
-                            <li>Google Maps integration</li>
-                            <li>Contact forms & WhatsApp button</li>
-                            <li>SEO optimization</li>
-                            <li>Image gallery/portfolio section</li>
-                            <li>Unlimited revisions</li>
-                            <li>1 month free support</li>
-                        </ul>
-                        <a href="https://wa.me/233242123801?text=I'm%20interested%20in%20the%20Business%20package%20(GH%E2%82%B51%2C500)" class="package-cta">Get Started</a>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-name">Premium</div>
-                        <div class="package-price">GH₵2,500<span>+</span></div>
-                        <div class="package-delivery">⚡ Delivery: 14-21 days</div>
-                        <ul class="package-features">
-                            <li>8-12 page comprehensive site</li>
-                            <li>Custom features & functionality</li>
-                            <li>E-commerce ready (product pages)</li>
-                            <li>Booking/appointment system</li>
-                            <li>Analytics dashboard setup</li>
-                            <li>Advanced SEO & performance</li>
-                            <li>Content management training</li>
-                            <li>3 months free support</li>
-                        </ul>
-                        <a href="https://wa.me/233242123801?text=I'm%20interested%20in%20the%20Premium%20package%20(GH%E2%82%B52%2C500)" class="package-cta">Get Started</a>
+            <div class="portfolio-card">
+                <div class="portfolio-preview" data-icon="💼">
+                    <div class="portfolio-overlay">
+                        <a href="https://fredka-consult.vercel.app/" target="_blank" class="view-demo-btn">View Live Demo →</a>
                     </div>
                 </div>
-
-                <div class="payment-info">
-                    <h3>Flexible Payment Options</h3>
-                    <div class="payment-options">
-                        <div class="payment-item">
-                            <span>💳</span> Mobile Money (MTN/Vodafone)
-                        </div>
-                        <div class="payment-item">
-                            <span>🏦</span> Bank Transfer
-                        </div>
-                        <div class="payment-item">
-                            <span>💵</span> Cash (Accra meetup)
-                        </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-type">Corporate</span>
+                    <h3>FREDKA Consult</h3>
+                    <p>Professional B2B consultancy website for HR and healthcare services. Clean, trustworthy design with comprehensive service showcase.</p>
+                    <div class="portfolio-tech">
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">Corporate Design</span>
+                        <span class="tech-tag">SEO Ready</span>
                     </div>
-                    <p style="color: #666; margin-top: 20px; font-size: 15px;">
-                        <strong>Payment Plans:</strong> 50% upfront, 50% on completion • 
-                        3-month installments available for GH₵2,000+ projects
-                    </p>
                 </div>
             </div>
 
-            <div class="contact-card">
-                <h3>Ready to Start Your Project?</h3>
-                <p>Get a free consultation and custom quote tailored to your specific needs.</p>
-                
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <strong>📧 Email</strong>
-                        <a href="mailto:willyoks@gmail.com">willyoks@gmail.com</a>
+            <div class="portfolio-card">
+                <div class="portfolio-preview" data-icon="📊">
+                    <div class="portfolio-overlay">
+                        <a href="https://yooku98.github.io/Portfolio-Website/index.html" target="_blank" class="view-demo-btn">View Live Demo →</a>
                     </div>
-                    <div class="contact-item">
-                        <strong>💬 WhatsApp</strong>
-                        <a href="https://wa.me/233242123801">+233 24 212 3801</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>🌐 Portfolio</strong>
-                        <a href="https://yooku98.github.io/Portfolio-Website/index.html" target="_blank">View My Work</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>📍 Location</strong>
-                        <span style="color: #666;">Accra, Ghana</span>
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-type">Professional</span>
+                    <h3>Personal Portfolio</h3>
+                    <p>Data analyst portfolio showcasing projects, skills, and professional experience. Modern layout with interactive elements.</p>
+                    <div class="portfolio-tech">
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">Portfolio</span>
+                        <span class="tech-tag">Professional</span>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="footer">
-            <div class="credentials">
-                William Thompson | Certified Web Designer (OpenLabs/NIIT) | Data Analyst & Data Scientist
+    <section class="content-section" id="packages">
+        <div class="section-header">
+            <h2>Choose Your Package</h2>
+            <p>Transparent pricing with no hidden fees. All packages include mobile-responsive design, unlimited revisions, and free consultation.</p>
+        </div>
+
+        <div class="packages">
+            <div class="package-card">
+                <div class="package-name">Starter</div>
+                <div class="package-price">GH₵800</div>
+                <div class="package-delivery">⚡ Delivery: 5-7 days</div>
+                <ul class="package-features">
+                    <li>1-page portfolio/landing site</li>
+                    <li>Mobile responsive design</li>
+                    <li>Contact form integration</li>
+                    <li>Basic SEO setup</li>
+                    <li>Social media links</li>
+                    <li>2 rounds of revisions</li>
+                </ul>
+                <a href="https://wa.me/233242123801?text=I'm%20interested%20in%20the%20Starter%20package%20(GH%E2%82%B5800)" class="package-cta">Get Started</a>
             </div>
-            <div class="credentials" style="margin-top: 10px;">
-                Professional portfolio & analytics expertise • Full-stack development skills
+
+            <div class="package-card featured">
+                <div class="popular-badge">Most Popular</div>
+                <div class="package-name">Business</div>
+                <div class="package-price">GH₵1,500</div>
+                <div class="package-delivery">⚡ Delivery: 10-14 days</div>
+                <ul class="package-features">
+                    <li>5-7 page website</li>
+                    <li>Professional design & branding</li>
+                    <li>Google Maps integration</li>
+                    <li>Contact forms & WhatsApp button</li>
+                    <li>SEO optimization</li>
+                    <li>Image gallery/portfolio section</li>
+                    <li>Unlimited revisions</li>
+                    <li>1 month free support</li>
+                </ul>
+                <a href="https://wa.me/233242123801?text=I'm%20interested%20in%20the%20Business%20package%20(GH%E2%82%B51%2C500)" class="package-cta">Get Started</a>
             </div>
+
+            <div class="package-card">
+                <div class="package-name">Premium</div>
+                <div class="package-price">GH₵2,500<span>+</span></div>
+                <div class="package-delivery">⚡ Delivery: 14-21 days</div>
+                <ul class="package-features">
+                    <li>8-12 page comprehensive site</li>
+                    <li>Custom features & functionality</li>
+                    <li>E-commerce ready (product pages)</li>
+                    <li>Booking/appointment system</li>
+                    <li>Analytics dashboard setup</li>
+                    <li>Advanced SEO & performance</li>
+                    <li>Content management training</li>
+                    <li>3 months free support</li>
+                </ul>
+                <a href="https://wa.me/233242123801?text=I'm%20interested%20in%20the%20Premium%20package%20(GH%E2%82%B52%2C500)" class="package-cta">Get Started</a>
+            </div>
+        </div>
+
+        <div class="payment-info">
+            <h3>Flexible Payment Options</h3>
+            <div class="payment-options">
+                <div class="payment-item">
+                    <span>💳</span> Mobile Money (MTN/Vodafone)
+                </div>
+                <div class="payment-item">
+                    <span>🏦</span> Bank Transfer
+                </div>
+                <div class="payment-item">
+                    <span>💵</span> Cash (Accra meetup)
+                </div>
+            </div>
+            <p style="color: #666; margin-top: 20px; font-size: 15px;">
+                <strong>Payment Plans:</strong> 50% upfront, 50% on completion • 
+                3-month installments available for GH₵2,000+ projects
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section" id="contact">
+        <div class="contact-card">
+            <h3>Ready to Start Your Project?</h3>
+            <p>Get a free consultation and custom quote tailored to your specific needs.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <strong>📧 Email</strong>
+                    <a href="mailto:willyoks@gmail.com">willyoks@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>💬 WhatsApp</strong>
+                    <a href="https://wa.me/233242123801">+233 24 212 3801</a>
+                </div>
+                <div class="contact-item">
+                    <strong>🌐 Portfolio</strong>
+                    <a href="https://yooku98.github.io/Portfolio-Website/index.html" target="_blank">View My Work</a>
+                </div>
+                <div class="contact-item">
+                    <strong>📍 Location</strong>
+                    <span style="color: #666;">Accra, Ghana</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer">
+        <div class="credentials">
+            William Thompson | Certified Web Designer (OpenLabs/NIIT) | Data Analyst & Data Scientist
+        </div>
+        <div class="credentials" style="margin-top: 10px;">
+            Professional portfolio & analytics expertise • Full-stack development skills
         </div>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const nav = document.querySelector('nav');
+            const navLinks = document.getElementById('navLinks');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (!nav.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
