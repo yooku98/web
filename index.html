@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>William Thompson | Web Designer in Accra, Ghana — From GHS 800</title>
+  <title>YookuWeb | Website Design in Accra, Ghana — From GHS 800</title>
   <meta name="description"
     content="Professional website design in Accra, Ghana from GHS 800. Custom, responsive sites for businesses and personal brands. Free consultation. WhatsApp: +233 24 212 3801.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://yooku98.github.io/web/">
 
   <!-- Open Graph -->
-  <meta property="og:title"       content="William Thompson | Web Designer Accra Ghana — From GHS 800">
+  <meta property="og:title"       content="YookuWeb | Website Designer Accra Ghana — From GHS 800">
   <meta property="og:description" content="Get a professional, responsive website for your business. Portfolio sites from GHS 800, full business sites up to GHS 5,000. Based in Accra. Free quote.">
   <meta property="og:image"       content="https://yooku98.github.io/web/og-image.jpg">
   <meta property="og:url"         content="https://yooku98.github.io/web/">
@@ -22,11 +22,11 @@
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Web Design Services — William Thompson",
+    "name": "Web Design Services — YookuWeb",
     "description": "Professional website design and data analytics services in Accra, Ghana. Responsive, custom-built websites for businesses.",
     "provider": {
       "@type": "Person",
-      "name": "William Thompson",
+      "name": "William Yooku",
       "url": "https://yooku98.github.io/Portfolio-Website/"
     },
     "areaServed": {
@@ -42,6 +42,8 @@
     "url": "https://yooku98.github.io/web/"
   }
   </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -50,10 +52,10 @@
         }
 
         :root {
-            --primary: #0A3D62;
-            --accent: #E84855;
-            --gold: #D4AF37;
-            --light: #F8F9FA;
+            --primary: #1A1A2E;
+            --accent: #F97316;
+            --gold: #6C63FF;
+            --light: #F5F5F0;
             --dark: #1A1A2E;
             --success: #25D366;
         }
@@ -63,7 +65,7 @@
         }
 
         body {
-            font-family: 'Manrope', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             background: var(--light);
             color: var(--dark);
             overflow-x: hidden;
@@ -90,12 +92,16 @@
         }
 
         .nav-logo {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Syne', sans-serif;
             font-size: 24px;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: 1px;
+            font-weight: 800;
+            color: white;
+            letter-spacing: -0.5px;
             z-index: 2001;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
         }
 
         .nav-links {
@@ -148,7 +154,7 @@
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            background: linear-gradient(135deg, #0f0f1e 0%, var(--dark) 100%);
             display: flex;
             align-items: center;
             padding: 120px 60px 80px;
@@ -161,7 +167,7 @@
             position: absolute;
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(232, 72, 85, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
             top: -200px;
             right: -200px;
             border-radius: 50%;
@@ -181,27 +187,28 @@
 
         .badge {
             display: inline-block;
-            background: rgba(232, 72, 85, 0.2);
-            color: var(--accent);
+            background: rgba(249, 115, 22, 0.15);
+            color: #fb923c;
             padding: 8px 20px;
             border-radius: 50px;
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 24px;
-            border: 2px solid var(--accent);
+            border: 1.5px solid rgba(249, 115, 22, 0.4);
+            letter-spacing: 0.04em;
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Syne', sans-serif;
             font-size: 64px;
-            font-weight: 900;
+            font-weight: 800;
             color: var(--light);
             line-height: 1.1;
             margin-bottom: 24px;
         }
 
         .highlight {
-            background: linear-gradient(120deg, var(--accent), var(--gold));
+            background: linear-gradient(120deg, var(--accent), #fb923c);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -271,8 +278,9 @@
         }
 
         .section-header h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Syne', sans-serif;
             font-size: 48px;
+            font-weight: 800;
             color: var(--dark);
             margin-bottom: 16px;
         }
@@ -314,8 +322,9 @@
         }
 
         .feature-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
+            font-family: 'Syne', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
             color: var(--dark);
             margin-bottom: 12px;
         }
@@ -350,7 +359,7 @@
 
         .portfolio-preview {
             height: 220px;
-            background: linear-gradient(135deg, var(--primary), var(--dark));
+            background: linear-gradient(135deg, #0f0f1e, var(--dark));
             position: relative;
             overflow: hidden;
         }
@@ -406,7 +415,7 @@
 
         .portfolio-type {
             display: inline-block;
-            background: rgba(232, 72, 85, 0.1);
+            background: rgba(249, 115, 22, 0.1);
             color: var(--accent);
             padding: 6px 16px;
             border-radius: 20px;
@@ -418,8 +427,9 @@
         }
 
         .portfolio-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
+            font-family: 'Syne', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
             color: var(--dark);
             margin-bottom: 12px;
         }
@@ -471,7 +481,7 @@
 
         .package-card.featured {
             border-color: var(--accent);
-            background: linear-gradient(135deg, #FFF5F5 0%, #FFFFFF 100%);
+            background: linear-gradient(135deg, #FFF5EE 0%, #FFFFFF 100%);
         }
 
         .popular-badge {
@@ -571,16 +581,18 @@
 
         /* Payment Info */
         .payment-info {
-            background: linear-gradient(135deg, #F8F9FA 0%, #E8E8E8 100%);
+            background: linear-gradient(135deg, #FFF5EE 0%, #F5F5F0 100%);
             padding: 40px;
             border-radius: 20px;
             text-align: center;
             margin-bottom: 60px;
+            border: 1px solid rgba(249,115,22,0.15);
         }
 
         .payment-info h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Syne', sans-serif;
             font-size: 28px;
+            font-weight: 700;
             color: var(--dark);
             margin-bottom: 20px;
         }
@@ -611,8 +623,9 @@
         }
 
         .contact-card h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Syne', sans-serif;
             font-size: 32px;
+            font-weight: 700;
             color: var(--dark);
             margin-bottom: 16px;
             text-align: center;
@@ -634,7 +647,7 @@
 
         .contact-item {
             padding: 20px;
-            background: #F8F9FA;
+            background: #F5F5F0;
             border-radius: 12px;
             text-align: center;
         }
@@ -812,7 +825,12 @@
 <body>
     <nav>
         <div class="nav-content">
-            <div class="nav-logo">William Thompson</div>
+            <div class="nav-logo">
+                <svg width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;margin-right:8px;">
+                    <path d="M4 6L14 22L24 6" stroke="#F97316" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="14" cy="22" r="3" fill="#F97316"/>
+                </svg>Yooku<span>Web</span>
+            </div>
             <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
@@ -826,11 +844,11 @@
 
     <section class="hero" id="home">
         <div class="hero-content">
-            <div class="badge">CERTIFIED WEB DESIGNER</div>
-            <h1>Transform Your Vision Into a <span class="highlight">Stunning Website</span></h1>
+            <div class="badge">✦ Based in Accra, Ghana</div>
+            <h1>Websites <span class="highlight">Built</span> to Be Seen</h1>
             <p class="subtitle">
-                Data-driven design meets creative excellence. Get a professional, responsive website 
-                that combines technical precision with visual appeal.
+                YookuWeb crafts fast, beautiful, and conversion-ready websites for businesses 
+                and personal brands that want to stand out online.
             </p>
             <div class="cta-group">
                 <a href="https://wa.me/233242123801?text=Hello%2C%20I%20would%20like%20a%20quote." class="btn btn-primary">💬 Chat on WhatsApp</a>
@@ -1010,7 +1028,7 @@
             <div class="contact-grid">
                 <div class="contact-item">
                     <strong>📧 Email</strong>
-                    <a href="mailto:willyoks@gmail.com">willyoks@gmail.com</a>
+                    <a href="/cdn-cgi/l/email-protection#fb8c92979782949088bb9c969a9297d5989496"><span class="__cf_email__" data-cfemail="aed9c7c2c2d7c1c5ddeec9c3cfc7c280cdc1c3">[email&#160;protected]</span></a>
                 </div>
                 <div class="contact-item">
                     <strong>💬 WhatsApp</strong>
@@ -1030,14 +1048,14 @@
 
     <div class="footer">
         <div class="credentials">
-            William Thompson | Certified Web Designer (OpenLabs/NIIT) | Data Analyst & Data Scientist
+            YookuWeb — William Yooku | Certified Web Designer (OpenLabs/NIIT) | Data Analyst & Data Scientist
         </div>
         <div class="credentials" style="margin-top: 10px;">
-            Professional portfolio & analytics expertise • Full-stack development skills
+            Professional portfolio & analytics expertise • Full-stack development skills • Accra, Ghana
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
@@ -1054,12 +1072,4 @@
         document.addEventListener('click', (e) => {
             const nav = document.querySelector('nav');
             const navLinks = document.getElementById('navLinks');
-            const toggle = document.querySelector('.mobile-menu-toggle');
-            
-            if (!nav.contains(e.target) && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-            }
-        });
-    </script>
-</body>
-</html>
+            const toggle = document.querySelec
